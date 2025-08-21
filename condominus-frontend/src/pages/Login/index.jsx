@@ -2,9 +2,7 @@ import Input from "../../components/Input"
 import Button from "../../components/Button"
 import styled from "styled-components"
 
-const MainContentStyled = styled.main`
-    width: 100vw;
-    height: 100vh;
+const MainContentStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +13,7 @@ const LoginSectionStyled = styled.section`
     padding: 50px 20px;
     border-radius: 10px;
     box-shadow: 1px 1px 10px #cecece;
-    min-width: 300px; 
+    min-width: 300px;
 
     h2 {
         margin: 0;
@@ -29,8 +27,8 @@ const Login = () => {
             <LoginSectionStyled className="login-section">
                 <h2>Login</h2>
                 <form>
-                    <Input inputType="text" label="Login" inputRequired={true}/>
-                    <Input inputType="password" label="Senha"  inputRequired={true}/>
+                    <Input inputType="text" label="Login" inputRequired={true} />
+                    <Input inputType="password" label="Senha" inputRequired={true} />
                     <Button>Fazer login</Button>
                 </form>
             </LoginSectionStyled>
