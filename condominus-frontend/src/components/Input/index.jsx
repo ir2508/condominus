@@ -24,11 +24,11 @@ const InputStyled = styled.input`
 
 `
 
-const Input = ({ inputType, label, inputRequired }) => {
+const Input = ({ inputType, label, inputRequired, onChange, inputId }) => {
     return (
         <DivInputStyled>
             <label>{label}</label>
-            <InputStyled type={inputType} placeholder={label} required={inputRequired?"required":""}/>
+            <InputStyled id={inputId} type={inputType} placeholder={label} required={inputRequired?"required":""} onChange={onChange}/>
         </DivInputStyled>
     )
 }

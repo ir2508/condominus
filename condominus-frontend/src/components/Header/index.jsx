@@ -31,10 +31,10 @@ const NavigationMenuStyled = styled.nav`
 const Header = () => {
     return (
         <MainHeaderStyled>
-            <ProjectNameStyled>us</ProjectNameStyled>
+            <ProjectNameStyled>Condominus</ProjectNameStyled>
             <NavigationMenuStyled>
-                <NavLink className="menu">Login</NavLink>
-                <NavLink className="menu">Formulário</NavLink>
+                <NavLink className="menu" to={"/"}>Login</NavLink>
+                <NavLink className="menu" to={"/nova-reclamacao"} >Formulário</NavLink>
             </NavigationMenuStyled>
         </MainHeaderStyled>
     )

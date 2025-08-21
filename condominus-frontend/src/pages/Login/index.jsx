@@ -24,7 +24,7 @@ const LoginSectionStyled = styled.section`
 const Login = () => {
     return (
         <MainContentStyled>
-            <LoginSectionStyled className="login-section">
+            <LoginSectionStyled>
                 <h2>Login</h2>
                 <form>
                     <Input inputType="text" label="Login" inputRequired={true} />
