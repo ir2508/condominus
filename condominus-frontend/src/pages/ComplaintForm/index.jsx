@@ -15,7 +15,7 @@ const LoginSectionStyled = styled.section`
     border-radius: 10px;
     box-shadow: 1px 1px 10px #cecece;
     min-width: 500px;
-    width: 1000px;
+    width: 800px;
 
     h2 {
         margin: 0;
@@ -54,6 +54,8 @@ const ComplaintForm = () => {
         descricao: "",
     })
 
+    const [stepForm, setStepForm] = useState(1)
+
     const handleChange = (e) => {
         setComplaint({
             ...complaint,
@@ -62,41 +64,66 @@ const ComplaintForm = () => {
         console.log(complaint)
     }
 
+    const handleNextForm = (e) => {
+        e.preventDefault()
+        setStepForm(2)
+    }
+
+    const handleCreateComplaint = () => {
+        
+    }
+
     return (
         <MainContentStyled>
             <LoginSectionStyled>
                 <h2>Novo feedback</h2>
+                {stepForm === 1 && (<h4>Passo 1/2 - Dados pessoais</h4>) }
+                {stepForm === 2 && (<h4>Passo 2/2 - Dados do feedback</h4>) }
                 <FormStyled>
-                    <div className="col-3">
-                        <Input inputId="nome" inputType="text" label="Nome" inputRequired={false} onChange={handleChange} />
-                    </div>
-                    <div className="col-3">
-                        <Input inputId="email" inputType="text" label="Telefone" inputRequired={false} onChange={handleChange} />
-                    </div>
-                    <div className="col-3">
-                        <Input inputId="telefone" inputType="email" label="E-mail" inputRequired={false} onChange={handleChange} />
-                    </div>
-                    <div className="col-2">
-                        <Input inputId="torre" inputType="text" label="Torre" inputRequired={true} onChange={handleChange} />
-                    </div>
-                    <div className="col-2">
-                        <Input inputId="apartamento" inputType="text" label="Apartamento" inputRequired={true} onChange={handleChange} />
-                    </div>
+                    {stepForm === 1 && (
+                        <>
+                            <div className="col-3">
+                                <Input inputId="nome" inputType="text" label="Nome" inputRequired={false} onChange={handleChange} />
+                            </div>
+                            <div className="col-3">
+                                <Input inputId="email" inputType="text" label="Telefone" inputRequired={false} onChange={handleChange} />
+                            </div>
+                            <div className="col-3">
+                                <Input inputId="telefone" inputType="email" label="E-mail" inputRequired={false} onChange={handleChange} />
+                            </div>
+                            <div className="col-2">
+                                <Input inputId="torre" inputType="text" label="Torre" inputRequired={false} onChange={handleChange} />
+                            </div>
+                            <div className="col-2">
+                                <Input inputId="apartamento" inputType="text" label="Apartamento" inputRequired={false} onChange={handleChange} />
+                            </div>
+                            <div className="col-2">
+                                <Button btType="bt-secondary" onClick={handleNextForm}>Não quero me identificar</Button>
+                            </div>
+                            <div className="col-2">
+                                <Button btType="bt-primary" onClick={handleNextForm}>Próximo</Button>
+                            </div>
+                        </>
+                    )}
 
-                    <div className="col-2">
-                        <Input inputId="data" inputType="text" label="Data e horário do ocorrido" inputRequired={true} onChange={handleChange} />
-                    </div>
-                    <div className="col-2">
-                        <Input inputId="local" inputType="text" label="Local" inputRequired={true} onChange={handleChange} />
-                    </div>
+                    {stepForm === 2 && (
+                        <>
+                            <div className="col-2">
+                                <Input inputId="data" inputType="text" label="Data e horário do ocorrido" inputRequired={true} onChange={handleChange} />
+                            </div>
+                            <div className="col-2">
+                                <Input inputId="local" inputType="text" label="Local" inputRequired={true} onChange={handleChange} />
+                            </div>
 
-                    <div className="col-1">
-                        <Input inputId="descricao" inputType="text" label="Descrição" inputRequired={true} onChange={handleChange} />
-                    </div>
+                            <div className="col-1">
+                                <Input inputId="descricao" inputType="text" label="Descrição" inputRequired={true} onChange={handleChange} />
+                            </div>
 
-                    <div className="col-1">
-                        <Button>Cadastrar</Button>
-                    </div>
+                            <div className="col-1">
+                                <Button btType="bt-primary" onClick={handleCreateComplaint}>Enviar feedback</Button>
+                            </div>
+                        </>
+                    )}
                 </FormStyled>
             </LoginSectionStyled>
         </MainContentStyled>

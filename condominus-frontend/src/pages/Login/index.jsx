@@ -29,7 +29,7 @@ const Login = () => {
                 <form>
                     <Input inputType="text" label="Login" inputRequired={true} />
                     <Input inputType="password" label="Senha" inputRequired={true} />
-                    <Button>Fazer login</Button>
+                    <Button btType="bt-primary">Fazer login</Button>
                 </form>
             </LoginSectionStyled>
         </MainContentStyled>

@@ -17,24 +17,27 @@ const ProjectNameStyled = styled.h1`
 `
 
 const NavigationMenuStyled = styled.nav`
-    
     .menu {
         color: var(--font-color);
         margin-left: 32px;
-    } 
+    }
 
     .menu:hover {
-        color: var(--principal-color)
+        color: var(--principal-color);
     }
 `
 
 const Header = () => {
     return (
         <MainHeaderStyled>
-            <ProjectNameStyled>Condominus</ProjectNameStyled>
+            <ProjectNameStyled>s</ProjectNameStyled>
             <NavigationMenuStyled>
-                <NavLink className="menu" to={"/"}>Login</NavLink>
-                <NavLink className="menu" to={"/nova-reclamacao"} >Formulário</NavLink>
+                <NavLink className="menu" to={"/"}>
+                    Login
+                </NavLink>
+                <NavLink className="menu" to={"/nova-reclamacao"}>
+                    Formulário
+                </NavLink>
             </NavigationMenuStyled>
         </MainHeaderStyled>
     )

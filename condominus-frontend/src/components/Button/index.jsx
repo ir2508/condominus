@@ -5,18 +5,32 @@ const ButtonStyled = styled.button`
     margin-top: 20px;
     width: 100%;
     padding: 10px;
-    background-color: var(--principal-color);
     cursor: pointer;
-    border: none;
     border-radius: 5px;
 
-    &:hover {
-        box-shadow: 1px 1px 5px var(--principal-color)
+    &.bt-primary {
+        background-color: var(--principal-color);
+        border: none;
+    }
+
+    &.bt-primary:hover {
+        box-shadow: 1px 1px 5px var(--principal-color);
+    }
+
+    &.bt-secondary {
+        background-color: var(--bg-color);
+        color: var(--font-color);
+        border: 1px solid var(--font-color);
+    }
+
+    &.bt-secondary:hover {
+        box-shadow: 1px 1px 5px var(--font-color);
     }
 `
 
-const Button = ({ children }) => {
-    return <ButtonStyled>{children}</ButtonStyled>
+const Button = ({ children, btType, onClick }) => {
+    console.log(btType)
+    return <ButtonStyled className={btType} onClick={onClick}>{children}</ButtonStyled>
 }
 
 export default Button
