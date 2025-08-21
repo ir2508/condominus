@@ -29,7 +29,6 @@ const ButtonStyled = styled.button`
 `
 
 const Button = ({ children, btType, onClick }) => {
-    console.log(btType)
     return <ButtonStyled className={btType} onClick={onClick}>{children}</ButtonStyled>
 }
 

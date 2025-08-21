@@ -2,6 +2,8 @@ import Input from "../../components/Input"
 import Button from "../../components/Button"
 import styled from "styled-components"
 import { useState } from "react"
+import { useRecoilState } from "recoil"
+import { complaintsState } from "../../recoil/complaintsAtom"
 
 const MainContentStyled = styled.div`
     display: flex;
@@ -55,13 +57,13 @@ const ComplaintForm = () => {
     })
 
     const [stepForm, setStepForm] = useState(1)
+    const [complaints, setComplaints] = useRecoilState(complaintsState)
 
     const handleChange = (e) => {
         setComplaint({
             ...complaint,
             [e.target.id]: e.target.value,
         })
-        console.log(complaint)
     }
 
     const handleNextForm = (e) => {
@@ -69,16 +71,18 @@ const ComplaintForm = () => {
         setStepForm(2)
     }
 
-    const handleCreateComplaint = () => {
-        
+    const handleCreateComplaint = (e) => {
+        e.preventDefault()
+        setComplaints((currentComplaints) => [...currentComplaints, complaint])
+        console.log(complaints)
     }
 
     return (
         <MainContentStyled>
             <LoginSectionStyled>
                 <h2>Novo feedback</h2>
-                {stepForm === 1 && (<h4>Passo 1/2 - Dados pessoais</h4>) }
-                {stepForm === 2 && (<h4>Passo 2/2 - Dados do feedback</h4>) }
+                {stepForm === 1 && <h4>Passo 1/2 - Dados pessoais</h4>}
+                {stepForm === 2 && <h4>Passo 2/2 - Dados do feedback</h4>}
                 <FormStyled>
                     {stepForm === 1 && (
                         <>
@@ -98,10 +102,14 @@ const ComplaintForm = () => {
                                 <Input inputId="apartamento" inputType="text" label="Apartamento" inputRequired={false} onChange={handleChange} />
                             </div>
                             <div className="col-2">
-                                <Button btType="bt-secondary" onClick={handleNextForm}>Não quero me identificar</Button>
+                                <Button btType="bt-secondary" onClick={handleNextForm}>
+                                    Não quero me identificar
+                                </Button>
                             </div>
                             <div className="col-2">
-                                <Button btType="bt-primary" onClick={handleNextForm}>Próximo</Button>
+                                <Button btType="bt-primary" onClick={handleNextForm}>
+                                    Próximo
+                                </Button>
                             </div>
                         </>
                     )}
@@ -120,7 +128,9 @@ const ComplaintForm = () => {
                             </div>
 
                             <div className="col-1">
-                                <Button btType="bt-primary" onClick={handleCreateComplaint}>Enviar feedback</Button>
+                                <Button btType="bt-primary" onClick={handleCreateComplaint}>
+                                    Enviar feedback
+                                </Button>
                             </div>
                         </>
                     )}
