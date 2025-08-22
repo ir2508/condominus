@@ -2,10 +2,9 @@ import Input from "../../components/Input"
 import Button from "../../components/Button"
 import styled from "styled-components"
 import { useState } from "react"
-import { useRecoilState } from "recoil"
-import { reportsState } from "../../recoil/reportsAtom"
+import { useReports } from "../../hooks/useReports"
 
-const MainContentStyled = styled.div`
+const MainContentStyled = styled.main`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,6 +45,7 @@ const FormStyled = styled.form`
 
 const ReportForm = () => {
     const [complaint, setComplaint] = useState({
+        id: "",
         nome: "",
         email: "",
         telefone: "",
@@ -53,11 +53,14 @@ const ReportForm = () => {
         apartamento: "",
         data: "",
         local: "",
+        assunto: "",
+        descricao: "",
+        status: "Em aberto",
         descricao: "",
     })
 
     const [stepForm, setStepForm] = useState(1)
-    const [complaints, setComplaints] = useRecoilState(reportsState)
+    const { reports, addReport } = useReports()
 
     const handleChange = (e) => {
         setComplaint({
@@ -73,8 +76,7 @@ const ReportForm = () => {
 
     const handleCreateComplaint = (e) => {
         e.preventDefault()
-        setComplaints((currentComplaints) => [...currentComplaints, complaint])
-        console.log(complaints)
+        addReport(complaint)
     }
 
     return (
@@ -95,10 +97,13 @@ const ReportForm = () => {
                             <div className="col-3">
                                 <Input inputId="telefone" inputType="email" label="E-mail" inputRequired={false} onChange={handleChange} />
                             </div>
-                            <div className="col-2">
+                            <div className="col-3">
+                                <Input inputId="id" inputType="text" label="Id" inputRequired={true} onChange={handleChange} />
+                            </div>
+                            <div className="col-3">
                                 <Input inputId="torre" inputType="text" label="Torre" inputRequired={false} onChange={handleChange} />
                             </div>
-                            <div className="col-2">
+                            <div className="col-3">
                                 <Input inputId="apartamento" inputType="text" label="Apartamento" inputRequired={false} onChange={handleChange} />
                             </div>
                             <div className="col-2">
@@ -123,7 +128,11 @@ const ReportForm = () => {
                                 <Input inputId="local" inputType="text" label="Local" inputRequired={true} onChange={handleChange} />
                             </div>
 
-                            <div className="col-1">
+                            <div className="col-2">
+                                <Input inputId="assunto" inputType="text" label="Assunto" inputRequired={true} onChange={handleChange} />
+                            </div>
+                            
+                            <div className="col-2">
                                 <Input inputId="descricao" inputType="text" label="Descrição" inputRequired={true} onChange={handleChange} />
                             </div>
 

@@ -38,6 +38,9 @@ const Header = () => {
                 <NavLink className="menu" to={"/nova-reclamacao"}>
                     Formulário
                 </NavLink>
+                <NavLink className="menu" to={"/admin/denuncias"}>
+                    Feedback
+                </NavLink>
             </NavigationMenuStyled>
         </MainHeaderStyled>
     )

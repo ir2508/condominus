@@ -2,7 +2,7 @@ import Input from "../../components/Input"
 import Button from "../../components/Button"
 import styled from "styled-components"
 
-const MainContentStyled = styled.div`
+const MainContentStyled = styled.main`
     display: flex;
     justify-content: center;
     align-items: center;

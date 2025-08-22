@@ -8,19 +8,18 @@ const ContainerStyled = styled.div`
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+
+    justify-content: space-between;
 `
 
-const FormLayout = () => {
+const DefaultLayout = () => {
     return (
         <ContainerStyled>
             <Header />
-            <main>
-                <Outlet />
-            </main>
+            <Outlet />
             <Footer />
         </ContainerStyled>
     )
 }
 
-export default FormLayout
+export default DefaultLayout
