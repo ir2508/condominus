@@ -3,7 +3,7 @@ import Button from "../../components/Button"
 import styled from "styled-components"
 import { useState } from "react"
 import { useRecoilState } from "recoil"
-import { complaintsState } from "../../recoil/complaintsAtom"
+import { reportsState } from "../../recoil/reportsAtom"
 
 const MainContentStyled = styled.div`
     display: flex;
@@ -44,7 +44,7 @@ const FormStyled = styled.form`
     }
 `
 
-const ComplaintForm = () => {
+const ReportForm = () => {
     const [complaint, setComplaint] = useState({
         nome: "",
         email: "",
@@ -57,7 +57,7 @@ const ComplaintForm = () => {
     })
 
     const [stepForm, setStepForm] = useState(1)
-    const [complaints, setComplaints] = useRecoilState(complaintsState)
+    const [complaints, setComplaints] = useRecoilState(reportsState)
 
     const handleChange = (e) => {
         setComplaint({
@@ -140,4 +140,4 @@ const ComplaintForm = () => {
     )
 }
 
-export default ComplaintForm
+export default ReportForm
