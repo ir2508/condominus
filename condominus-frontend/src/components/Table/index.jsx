@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import styled from "styled-components"
 
 const DataTableStyled = styled.table`
@@ -45,7 +46,7 @@ const Table = ({ dataToShow }) => {
                             <td>{data.local}</td>
                             <td>{data.assunto}</td>
                             <td>{data.status}</td>
-                            <td>Visualizar</td>
+                            <td><NavLink to={data.id}>Visualizar</NavLink></td>
                         </tr>
                     )
                 })}

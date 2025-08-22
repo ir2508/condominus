@@ -3,6 +3,7 @@ import Login from "../pages/Login"
 import DefaultLayout from "../layouts/DefaultLayout"
 import ReportForm from "../pages/ReportForm"
 import ShowReports from "../pages/ShowReports"
+import ShowReport from "../pages/ShowReport"
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
         children: [
             // { path: "/", element: <Login /> },
             { path: "denuncias", element: <ShowReports /> },
+            { path: "denuncias/:id", element: <ShowReport /> },
         ],
     },
 ])
